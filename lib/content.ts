@@ -44,7 +44,7 @@ export const FACTS = [
   { value: "30 anos", label: "A completar em 2026" },
   { value: "6º Dan", label: "Graduação Kodansha do sensei fundador" },
   { value: "+60", label: "Crianças já atendidas pelo Projeto Social" },
-  { value: "4", label: "Modalidades: judô, jiu-jitsu, muay thai e yoga" },
+  { value: "3", label: "Modalidades: judô, jiu-jitsu e muay thai" },
   { value: "7 dias", label: "De treino por semana, em vários horários" },
 ];
 
@@ -145,14 +145,6 @@ export const MODALITIES = [
     lead: "Técnica em pé e condicionamento.",
     text: "Aulas com boa didática, unindo o lado técnico à comunicação e ao ritmo. Turmas adultas em vários horários ao longo da semana.",
     photo: PHOTOS.muaythai,
-  },
-  {
-    id: "yoga",
-    name: "Yoga",
-    kanji: "ヨガ",
-    lead: "Mobilidade, respiração e recuperação.",
-    text: "Um complemento ao treino de luta: consciência corporal e respiração para sustentar a evolução técnica com saúde.",
-    photo: PHOTOS.dojoAula,
   },
 ];
 

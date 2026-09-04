@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 
 const description =
-  "Academia de Judô Shoorikan — desde 1996, na Vila Mariana, São Paulo. Judô, jiu-jitsu, muay thai e yoga, do primeiro contato ao alto rendimento. Tradição, técnica e respeito, sob a direção do sensei Jairo Andrade.";
+  "Academia de Judô Shoorikan — desde 1996, na Vila Mariana, São Paulo. Judô, jiu-jitsu e muay thai, do primeiro contato ao alto rendimento. Tradição, técnica e respeito, sob a direção do sensei Jairo Andrade.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shoorikan.vercel.app"),

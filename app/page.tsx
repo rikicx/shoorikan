@@ -16,7 +16,7 @@ const jsonLd = {
   "@type": "SportsActivityLocation",
   name: SITE.name,
   description:
-    "Academia de judô fundada em 1996, na Vila Mariana, São Paulo. Judô, jiu-jitsu, muay thai e yoga.",
+    "Academia de judô fundada em 1996, na Vila Mariana, São Paulo. Judô, jiu-jitsu e muay thai.",
   url: SITE.currentSite,
   telephone: "+55 11 98888-4324",
   sameAs: [SITE.instagram, SITE.storeInstagram, SITE.currentSite],

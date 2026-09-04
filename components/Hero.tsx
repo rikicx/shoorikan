@@ -125,7 +125,7 @@ export default function Hero() {
 
         <div className="hero__row">
           <p className="hero__sub">
-            Judô, jiu-jitsu, muay thai e yoga — do primeiro rolamento da
+            Judô, jiu-jitsu e muay thai — do primeiro rolamento da
             criança ao alto rendimento do atleta. Trinta anos de tradição,
             técnica e, acima de tudo, respeito, sob a direção do sensei Jairo
             Andrade, 6º Dan.

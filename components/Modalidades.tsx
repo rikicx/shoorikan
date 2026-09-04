@@ -8,7 +8,7 @@ export default function Modalidades() {
         <div className="modalidades__head">
           <div>
             <div className="eyebrow label">03 — Modalidades</div>
-            <h2 data-reveal>Quatro caminhos, um mesmo dojo.</h2>
+            <h2 data-reveal>Três caminhos, um mesmo dojo.</h2>
           </div>
           <a
             className="ulink label"
@@ -35,7 +35,8 @@ export default function Modalidades() {
               </div>
               <div className="mod-card__body">
                 <span className="mod-card__index">
-                  {String(i + 1).padStart(2, "0")} / 04
+                  {String(i + 1).padStart(2, "0")} /{" "}
+                  {String(MODALITIES.length).padStart(2, "0")}
                 </span>
                 <div>
                   <div className="mod-card__kanji" aria-hidden="true">
