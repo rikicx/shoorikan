@@ -28,7 +28,6 @@ export const TEAM_PHOTOS: Record<string, string> = {
   "Raphael Mansur": "/equipe/Raphael-Mansur.jpg",
   "André Luis Carnelós": "/equipe/Andre-Luis-Carnelos.jpg",
   "Ana Lucia Coimbra": "/equipe/Ana-Lucia-Coimbra.jpg",
-  "Vitória Medrado": "/equipe/Vitoria-Medrado.jpg",
   "Marcos Oquendo": "/equipe/Marcos-Oquendo.jpg",
   "Marcelo Fruehwirth": "/equipe/Marcelo-Fruehwirth.jpg",
 };

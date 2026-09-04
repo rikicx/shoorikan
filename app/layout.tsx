@@ -6,6 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import BackToTop from "@/components/BackToTop";
 
 const description =
   "Academia de Judô Shoorikan — desde 1996, na Vila Mariana, São Paulo. Judô, jiu-jitsu e muay thai, do primeiro contato ao alto rendimento. Tradição, técnica e respeito, sob a direção do sensei Jairo Andrade.";
@@ -61,6 +62,7 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
         <FloatingCTA />
+        <BackToTop />
       </body>
     </html>
   );

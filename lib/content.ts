@@ -269,11 +269,6 @@ export const TEAM = [
     bio: "Enfermeira especialista em cardiologia. Iniciou a arte marcial em 1997 com os senseis Yamasaki, Jairo Andrade e Tsutomu Niitsuma. Pratica Kata — Nage No Kata, Katame No Kata e Ju No Kata — e é medalhista no Campeonato Paulista de Nage No Kata, categoria Yudansha dupla mista.",
   },
   {
-    name: "Vitória Medrado",
-    role: "Judô 1º Dan",
-    bio: "Sensei desde 2021, especializada em treinamento infantil. Atleta de judô desde os oito anos, com passagem pelo alto rendimento e diversas medalhas. Formada na área de educação.",
-  },
-  {
     name: "Marcos Oquendo",
     role: "Judô 1º Dan",
     bio: "Iniciou o judô em 1983 com os senseis Carlos Penna e Juarez Jesus. Foi campeão dos antigos campeonatos “zonal”, “regional” e “paulista”. Competidor de Kata (Nage No Kata e Katame No Kata) e auxiliar do corpo técnico.",

@@ -21,8 +21,12 @@ export default function Historia() {
 
     const ctx = gsap.context(() => {
       const el = track.current!;
-      const distance = () =>
-        Math.max(0, el.scrollWidth - el.parentElement!.clientWidth);
+      // Guarda contra o elemento já ter sido desmontado (ex.: navegação
+      // rápida) quando o ScrollTrigger recalcula em um resize/refresh tardio.
+      const distance = () => {
+        if (!el.isConnected || !el.parentElement) return 0;
+        return Math.max(0, el.scrollWidth - el.parentElement.clientWidth);
+      };
 
       const tween = gsap.to(el, {
         x: () => -distance(),

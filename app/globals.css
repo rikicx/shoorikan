@@ -1166,20 +1166,52 @@ p {
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
 }
 
-.prog-row {
+.prog-row__text {
+  color: var(--stone);
+  font-size: 0.97rem;
+  max-width: 60ch;
+}
+
+/* --- Grade de programas (3x2 no desktop, sanfona no mobile) --- */
+.prog-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.4rem 2rem;
-  padding: 1.8rem 0;
-  border-top: 1px solid var(--line-light);
-  transition: background 0.5s var(--ease);
+  gap: 1px;
+  background: var(--line-light);
+  border: 1px solid var(--line-light);
 }
 
-.prog-row:last-child {
-  border-bottom: 1px solid var(--line-light);
+.prog-card {
+  background: var(--sumi);
 }
 
-.prog-row__tag {
+.prog-card__summary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.6rem clamp(1.25rem, 3vw, 2rem);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.prog-icon {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  color: var(--violet-hi);
+}
+
+.prog-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.prog-card__tag {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.14em;
@@ -1187,33 +1219,68 @@ p {
   color: var(--violet-hi);
 }
 
-.prog-row__age {
+.prog-card__age {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--stone-dim);
 }
 
-.prog-row__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  color: var(--washi);
+.prog-card__chev {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--stone);
+  transition: transform 0.35s var(--ease);
+  flex: none;
 }
 
-.prog-row__text {
+.prog-card--open .prog-card__chev {
+  transform: rotate(45deg);
+}
+
+/* A altura aberta/fechada é controlada via inline style (React state) —
+   mais previsível entre navegadores do que depender só do CSS. */
+.prog-card__body {
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease);
+}
+
+.prog-card__bodyInner {
+  padding: 0 clamp(1.25rem, 3vw, 2rem) clamp(1.4rem, 3vw, 2rem);
+}
+
+.prog-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  color: var(--washi);
+  margin-bottom: 0.5rem;
+}
+
+.prog-card__text {
   color: var(--stone);
-  font-size: 0.97rem;
-  max-width: 60ch;
+  font-size: 0.92rem;
+  max-width: 42ch;
+}
+
+@media (min-width: 640px) {
+  .prog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 900px) {
-  .prog-row {
-    grid-template-columns: 0.5fr 1fr 1.5fr;
-    align-items: baseline;
+  .prog-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
-  .prog-row__meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+  .prog-card__summary {
+    cursor: default;
+  }
+  .prog-card__chev {
+    display: none;
+  }
+  .prog-card__body {
+    max-height: none !important;
   }
 }
 
@@ -2104,6 +2171,55 @@ p {
 @media (min-width: 900px) {
   .floating-cta {
     right: 1.6rem;
+    bottom: 1.6rem;
+  }
+}
+
+/* Voltar ao topo — espelha o floating-cta, do lado esquerdo */
+.back-to-top {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 190;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.3rem;
+  background: var(--sumi);
+  color: var(--washi);
+  border: 1px solid var(--line-light);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 40px rgba(11, 10, 15, 0.25);
+  transform: translateY(150%);
+  transition: transform 0.6s var(--ease), background 0.4s var(--ease),
+    color 0.4s var(--ease);
+}
+
+.back-to-top:hover {
+  background: var(--violet);
+  color: #fff;
+  border-color: var(--violet);
+}
+
+.back-to-top--show {
+  transform: none;
+}
+
+.back-to-top span {
+  transition: transform 0.4s var(--ease);
+}
+
+.back-to-top:hover span {
+  transform: translateY(-2px);
+}
+
+@media (min-width: 900px) {
+  .back-to-top {
+    left: 1.6rem;
     bottom: 1.6rem;
   }
 }
