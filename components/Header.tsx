@@ -6,11 +6,14 @@ import { usePathname } from "next/navigation";
 import { NAV } from "@/lib/content";
 import { SITE, waLink } from "@/lib/site";
 import { LOGO } from "@/lib/images";
+import { scrollToId } from "./SmoothScroll";
 
 export default function Header() {
   const pathname = usePathname();
+  const onHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -30,10 +33,79 @@ export default function Header() {
     setOpen(false);
   }, [pathname]);
 
+  // Scroll-spy só para as seções que vivem na própria home
+  // (História, Princípios, Modalidades, Programas).
+  useEffect(() => {
+    if (!onHome) return;
+    const ids = NAV.filter((n) => !n.route).map((n) => n.id);
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+    if (!sections.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.6, 1] },
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, [onHome]);
+
+  const isActive = (item: (typeof NAV)[number]) =>
+    item.route ? pathname === item.route : onHome && active === item.id;
+
+  const renderLink = (item: (typeof NAV)[number], closeOnClick?: boolean) => {
+    const active = isActive(item);
+    const activeAttr = active ? "true" : undefined;
+
+    if (item.route) {
+      return (
+        <Link
+          href={item.route}
+          data-active={activeAttr}
+          aria-current={active ? "page" : undefined}
+          onClick={closeOnClick ? () => setOpen(false) : undefined}
+        >
+          {item.label}
+        </Link>
+      );
+    }
+
+    return (
+      <a
+        href={onHome ? `#${item.id}` : `/#${item.id}`}
+        data-active={activeAttr}
+        onClick={(e) => {
+          if (!onHome) return; // deixa o navegador ir para /#id
+          e.preventDefault();
+          if (closeOnClick) setOpen(false);
+          window.setTimeout(() => scrollToId(item.id), closeOnClick ? 260 : 0);
+        }}
+      >
+        {item.label}
+      </a>
+    );
+  };
+
   return (
     <>
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
-        <Link className="brand" href="/" aria-label="Shoorikan — início">
+        <Link
+          className="brand"
+          href="/"
+          onClick={(e) => {
+            if (onHome) {
+              e.preventDefault();
+              scrollToId("inicio");
+            }
+          }}
+          aria-label="Shoorikan — início"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="brand__logo"
@@ -48,20 +120,9 @@ export default function Header() {
 
         <nav className="nav" aria-label="Principal">
           <ul className="nav__list">
-            {NAV.map((item) => {
-              const active = pathname === item.route;
-              return (
-                <li key={item.id}>
-                  <Link
-                    href={item.route}
-                    data-active={active ? "true" : undefined}
-                    aria-current={active ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
+            {NAV.map((item) => (
+              <li key={item.id}>{renderLink(item)}</li>
+            ))}
           </ul>
 
           <a
@@ -86,20 +147,11 @@ export default function Header() {
       </header>
 
       <div className={`mobile-nav${open ? " mobile-nav--open" : ""}`}>
-        {NAV.map((item) => {
-          const active = pathname === item.route;
-          return (
-            <span key={item.id} className="mobile-nav__item">
-              <Link
-                href={item.route}
-                data-active={active ? "true" : undefined}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            </span>
-          );
-        })}
+        {NAV.map((item) => (
+          <span key={item.id} className="mobile-nav__item">
+            {renderLink(item, true)}
+          </span>
+        ))}
         <a
           href={waLink()}
           target="_blank"

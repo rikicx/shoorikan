@@ -1,12 +1,10 @@
 import { MODALITIES } from "@/lib/content";
 import { waLink } from "@/lib/site";
-import BackLink from "./BackLink";
 
 export default function Modalidades() {
   return (
     <section className="modalidades" id="modalidades">
       <div className="container">
-        <BackLink light />
         <div className="modalidades__head">
           <div>
             <div className="eyebrow label">03 — Modalidades</div>

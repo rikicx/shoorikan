@@ -1,6 +1,10 @@
 import RevealInit from "@/components/Reveal";
 import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
+import Historia from "@/components/Historia";
+import Principios from "@/components/Principios";
+import Modalidades from "@/components/Modalidades";
+import Programas from "@/components/Programas";
 import SiteIndex from "@/components/SiteIndex";
 import { SITE } from "@/lib/site";
 
@@ -34,6 +38,10 @@ export default function Page() {
       <RevealInit />
       <Hero />
       <Manifesto />
+      <Historia />
+      <Principios />
+      <Modalidades />
+      <Programas />
       <SiteIndex />
     </>
   );

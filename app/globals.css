@@ -1906,7 +1906,8 @@ p {
   gap: 0.75rem 1.5rem;
   padding: 1.6rem 0;
   border-top: 1px solid var(--line-light);
-  transition: padding-left 0.4s var(--ease), background 0.4s var(--ease);
+  transform: translateX(0);
+  transition: transform 0.4s var(--ease), background 0.4s var(--ease);
 }
 
 .siteindex__grid > .siteindex__item:last-child {
@@ -1914,7 +1915,7 @@ p {
 }
 
 .siteindex__item:hover {
-  padding-left: 0.6rem;
+  transform: translateX(0.6rem);
   background: rgba(124, 92, 255, 0.07);
 }
 

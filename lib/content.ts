@@ -8,13 +8,15 @@ import { PHOTOS } from "./images";
 /* NAVEGAÇÃO                                                           */
 /* ------------------------------------------------------------------ */
 
-export type NavItem = { id: string; label: string; route: string };
+export type NavItem = { id: string; label: string; route?: string };
 
+// Itens sem `route` são seções que vivem na própria home (âncora); com
+// `route`, são páginas dedicadas.
 export const NAV: NavItem[] = [
-  { id: "historia", label: "História", route: "/historia" },
-  { id: "principios", label: "Princípios", route: "/principios" },
-  { id: "modalidades", label: "Modalidades", route: "/modalidades" },
-  { id: "programas", label: "Programas", route: "/programas" },
+  { id: "historia", label: "História" },
+  { id: "principios", label: "Princípios" },
+  { id: "modalidades", label: "Modalidades" },
+  { id: "programas", label: "Programas" },
   { id: "equipe", label: "Equipe", route: "/equipe" },
   { id: "projeto-social", label: "Projeto Social", route: "/projeto-social" },
   { id: "estrutura", label: "O Dojo", route: "/estrutura" },
@@ -23,30 +25,10 @@ export const NAV: NavItem[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/* ÍNDICE DO SITE (usado na home para linkar todas as páginas)         */
+/* ÍNDICE DO SITE (usado na home para linkar as páginas dedicadas)     */
 /* ------------------------------------------------------------------ */
 
 export const SITE_PAGES = [
-  {
-    href: "/historia",
-    title: "História",
-    desc: "Trinta anos de tradição, desde o antigo Yamasaki Judô Clube.",
-  },
-  {
-    href: "/principios",
-    title: "Princípios",
-    desc: "A filosofia de Jigoro Kano que guia cada treino.",
-  },
-  {
-    href: "/modalidades",
-    title: "Modalidades",
-    desc: "Judô, jiu-jitsu e muay thai — conheça cada arte.",
-  },
-  {
-    href: "/programas",
-    title: "Programas",
-    desc: "Turmas para cada fase da vida, do Kids ao alto rendimento.",
-  },
   {
     href: "/equipe",
     title: "Equipe",

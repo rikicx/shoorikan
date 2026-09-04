@@ -1,13 +1,11 @@
 import Link from "next/link";
 import { PROGRAMS } from "@/lib/content";
 import { waLink } from "@/lib/site";
-import BackLink from "./BackLink";
 
 export default function Programas() {
   return (
     <section className="programas" id="programas">
       <div className="container programas__head">
-        <BackLink />
         <div className="eyebrow label label--violet">04 — Programas</div>
         <h2 data-reveal>Uma turma para cada fase da vida.</h2>
       </div>

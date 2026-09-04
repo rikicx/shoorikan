@@ -33,30 +33,29 @@ npm start
 
 ## Estrutura
 
-O site é **multi-página**: cada item do menu tem sua própria URL. A home é uma
-landing curta (Hero + manifesto + índice) que linka para todas elas — nenhum
-conteúdo do site "de uma página só" original foi perdido, só reorganizado.
+O site é **híbrido**: História, Princípios, Modalidades e Programas vivem na
+própria **home** (como seções, com âncora `/#id`); Equipe, Projeto Social,
+O Dojo, Horários e Visite têm **página própria**. O menu mostra o item ativo
+nos dois casos (scroll-spy na home, rota nas demais) — nenhum conteúdo foi
+perdido nas reorganizações, só reposicionado.
 
 ```
 app/
-  layout.tsx            Metadados, fontes, header/footer, scroll suave
-  page.tsx              Home: Hero + Manifesto + índice de páginas + JSON-LD
-  historia/page.tsx      /historia
-  principios/page.tsx    /principios
-  modalidades/page.tsx   /modalidades
-  programas/page.tsx     /programas
-  equipe/page.tsx        /equipe
-  projeto-social/page.tsx /projeto-social
-  estrutura/page.tsx     /estrutura (O Dojo)
-  horarios/page.tsx      /horarios
-  visite/page.tsx        /visite
-  globals.css            Sistema visual completo (tokens, seções, responsivo)
-  fonts.ts               Zen Kaku Gothic New (display, com kanji) + Roboto (corpo) + Roboto Mono (rótulos)
+  layout.tsx              Metadados, fontes, header/footer, scroll suave
+  page.tsx                Home: Hero + Manifesto + História + Princípios +
+                           Modalidades + Programas + índice de páginas + JSON-LD
+  equipe/page.tsx          /equipe
+  projeto-social/page.tsx  /projeto-social
+  estrutura/page.tsx       /estrutura (O Dojo)
+  horarios/page.tsx        /horarios
+  visite/page.tsx          /visite
+  globals.css              Sistema visual completo (tokens, seções, responsivo)
+  fonts.ts                 Zen Kaku Gothic New (display, com kanji) + Roboto (corpo) + Roboto Mono (rótulos)
 components/
-  Header, Footer, Hero, SiteIndex  Globais / home
-  Historia, Principios, Modalidades, Programas, Equipe,
-  ProjetoSocial, Estrutura, Horarios, Visite  Uma seção por página dedicada
-  BackLink                Link "← Shoorikan" no topo de cada página de seção
+  Header, Footer, Hero, Manifesto, SiteIndex  Globais / home
+  Historia, Principios, Modalidades, Programas  Seções da home
+  Equipe, ProjetoSocial, Estrutura, Horarios, Visite  Uma seção por página dedicada
+  BackLink                Link "← Shoorikan" no topo de cada página dedicada
 lib/
   site.ts         Contato, endereço, gerador de link do WhatsApp
   content.ts      TODO o conteúdo editorial (nav, equipe, horários, história...)
