@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PRINCIPLES } from "@/lib/content";
 import { PHOTOS } from "@/lib/images";
+import BackLink from "./BackLink";
 
 export default function Principios() {
   const root = useRef<HTMLElement | null>(null);
@@ -59,6 +60,7 @@ export default function Principios() {
       </div>
 
       <div className="container principios__inner">
+        <BackLink />
         <div className="eyebrow label label--violet">02 — Princípios</div>
 
         <blockquote className="principios__quote" data-reveal>

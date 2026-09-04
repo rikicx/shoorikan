@@ -1581,6 +1581,30 @@ p {
   color: var(--washi);
 }
 
+/* Link "voltar" usado no topo de cada página de seção */
+.page-back {
+  display: inline-block;
+  margin-bottom: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stone);
+  transition: color 0.3s var(--ease);
+}
+
+.page-back:hover {
+  color: var(--washi);
+}
+
+.page-back--light {
+  color: var(--stone-dim);
+}
+
+.page-back--light:hover {
+  color: var(--ink);
+}
+
 .subhero h1 {
   font-size: var(--fs-h1);
   max-width: 16ch;
@@ -1848,6 +1872,92 @@ p {
 @media (min-width: 900px) {
   .visite__grid {
     grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+/* ============================================================
+   SITEINDEX (home — linka todas as páginas)
+   ============================================================ */
+.siteindex {
+  background: var(--sumi);
+  color: var(--washi);
+  padding-block: var(--section-y);
+}
+
+.siteindex__head {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.siteindex__head h2 {
+  font-size: var(--fs-h2);
+  max-width: 20ch;
+  color: #fff;
+}
+
+.siteindex__grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.siteindex__item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--line-light);
+  transition: padding-left 0.4s var(--ease), background 0.4s var(--ease);
+}
+
+.siteindex__grid > .siteindex__item:last-child {
+  border-bottom: 1px solid var(--line-light);
+}
+
+.siteindex__item:hover {
+  padding-left: 0.6rem;
+  background: rgba(124, 92, 255, 0.07);
+}
+
+.siteindex__num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--violet-hi);
+}
+
+.siteindex__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.siteindex__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.6vw, 1.8rem);
+  color: var(--washi);
+}
+
+.siteindex__desc {
+  color: var(--stone);
+  font-size: 0.9rem;
+  max-width: 52ch;
+}
+
+.siteindex__arrow {
+  font-family: var(--font-mono);
+  color: var(--stone);
+  transition: transform 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.siteindex__item:hover .siteindex__arrow {
+  color: var(--violet-hi);
+  transform: translateX(6px);
+}
+
+@media (max-width: 640px) {
+  .siteindex__desc {
+    display: none;
   }
 }
 

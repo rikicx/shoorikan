@@ -1,10 +1,12 @@
 import { STRUCTURE } from "@/lib/content";
 import { GALLERY } from "@/lib/images";
+import BackLink from "./BackLink";
 
 export default function Estrutura() {
   return (
     <section className="estrutura" id="estrutura">
       <div className="container">
+        <BackLink light />
         <div
           className="eyebrow label"
           style={{ color: "var(--stone-dim)" }}

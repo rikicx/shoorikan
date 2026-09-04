@@ -1,6 +1,7 @@
 import { SOCIAL } from "@/lib/content";
 import { PHOTOS } from "@/lib/images";
 import { waLink } from "@/lib/site";
+import BackLink from "./BackLink";
 
 export default function ProjetoSocial() {
   return (
@@ -11,6 +12,7 @@ export default function ProjetoSocial() {
       </div>
 
       <div className="container social__inner">
+        <BackLink />
         <div className="eyebrow label label--violet">06 — Projeto Social</div>
 
         <p className="social__lead" data-reveal>

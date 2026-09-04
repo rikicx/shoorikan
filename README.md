@@ -2,7 +2,7 @@
 
 Site institucional da **Academia de Judô Shoorikan** (Vila Mariana, São Paulo).
 Next.js 14 (App Router) + TypeScript, animações com GSAP/ScrollTrigger e scroll
-suave com Lenis. Página única, cinematográfica, com foco em conversão
+suave com Lenis. Multi-página, cinematográfico, com foco em conversão
 (aula experimental via WhatsApp).
 
 ## Rodar localmente
@@ -33,17 +33,33 @@ npm start
 
 ## Estrutura
 
+O site é **multi-página**: cada item do menu tem sua própria URL. A home é uma
+landing curta (Hero + manifesto + índice) que linka para todas elas — nenhum
+conteúdo do site "de uma página só" original foi perdido, só reorganizado.
+
 ```
 app/
-  layout.tsx        Metadados, fontes, header/footer, scroll suave
-  page.tsx          Home: composição das seções + JSON-LD (SEO local)
-  horarios/page.tsx Página dedicada da grade de horários
-  globals.css       Sistema visual completo (tokens, seções, responsivo)
-  fonts.ts          Zen Kaku Gothic New (display, com kanji) + Roboto (corpo) + Roboto Mono (rótulos)
-components/         Uma seção por arquivo (Hero, Historia, Principios, ...)
+  layout.tsx            Metadados, fontes, header/footer, scroll suave
+  page.tsx              Home: Hero + Manifesto + índice de páginas + JSON-LD
+  historia/page.tsx      /historia
+  principios/page.tsx    /principios
+  modalidades/page.tsx   /modalidades
+  programas/page.tsx     /programas
+  equipe/page.tsx        /equipe
+  projeto-social/page.tsx /projeto-social
+  estrutura/page.tsx     /estrutura (O Dojo)
+  horarios/page.tsx      /horarios
+  visite/page.tsx        /visite
+  globals.css            Sistema visual completo (tokens, seções, responsivo)
+  fonts.ts               Zen Kaku Gothic New (display, com kanji) + Roboto (corpo) + Roboto Mono (rótulos)
+components/
+  Header, Footer, Hero, SiteIndex  Globais / home
+  Historia, Principios, Modalidades, Programas, Equipe,
+  ProjetoSocial, Estrutura, Horarios, Visite  Uma seção por página dedicada
+  BackLink                Link "← Shoorikan" no topo de cada página de seção
 lib/
   site.ts         Contato, endereço, gerador de link do WhatsApp
-  content.ts      TODO o conteúdo editorial (equipe, horários, história...)
+  content.ts      TODO o conteúdo editorial (nav, equipe, horários, história...)
   images.ts       Mapeamento das imagens reais em /public
 public/
   logo/           Logo oficial da academia

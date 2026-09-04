@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TIMELINE } from "@/lib/content";
+import BackLink from "./BackLink";
 
 export default function Historia() {
   const root = useRef<HTMLElement | null>(null);
@@ -54,6 +55,7 @@ export default function Historia() {
     <section className="historia" id="historia" ref={root} aria-label="A Shoorikan">
       <div className="historia__inner">
         <div className="historia__head">
+          <BackLink />
           <div className="eyebrow label">01 — Legado</div>
           <h2 data-reveal>
             Trinta anos mantendo a tradição do verdadeiro judô.

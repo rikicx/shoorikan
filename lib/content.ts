@@ -8,17 +8,70 @@ import { PHOTOS } from "./images";
 /* NAVEGAÇÃO                                                           */
 /* ------------------------------------------------------------------ */
 
-export type NavItem = { id: string; label: string; route?: string };
+export type NavItem = { id: string; label: string; route: string };
 
 export const NAV: NavItem[] = [
-  { id: "historia", label: "História" },
-  { id: "principios", label: "Princípios" },
-  { id: "modalidades", label: "Modalidades" },
-  { id: "programas", label: "Programas" },
-  { id: "equipe", label: "Equipe" },
-  { id: "projeto-social", label: "Projeto Social" },
+  { id: "historia", label: "História", route: "/historia" },
+  { id: "principios", label: "Princípios", route: "/principios" },
+  { id: "modalidades", label: "Modalidades", route: "/modalidades" },
+  { id: "programas", label: "Programas", route: "/programas" },
+  { id: "equipe", label: "Equipe", route: "/equipe" },
+  { id: "projeto-social", label: "Projeto Social", route: "/projeto-social" },
+  { id: "estrutura", label: "O Dojo", route: "/estrutura" },
   { id: "horarios", label: "Horários", route: "/horarios" },
-  { id: "visite", label: "Visite" },
+  { id: "visite", label: "Visite", route: "/visite" },
+];
+
+/* ------------------------------------------------------------------ */
+/* ÍNDICE DO SITE (usado na home para linkar todas as páginas)         */
+/* ------------------------------------------------------------------ */
+
+export const SITE_PAGES = [
+  {
+    href: "/historia",
+    title: "História",
+    desc: "Trinta anos de tradição, desde o antigo Yamasaki Judô Clube.",
+  },
+  {
+    href: "/principios",
+    title: "Princípios",
+    desc: "A filosofia de Jigoro Kano que guia cada treino.",
+  },
+  {
+    href: "/modalidades",
+    title: "Modalidades",
+    desc: "Judô, jiu-jitsu e muay thai — conheça cada arte.",
+  },
+  {
+    href: "/programas",
+    title: "Programas",
+    desc: "Turmas para cada fase da vida, do Kids ao alto rendimento.",
+  },
+  {
+    href: "/equipe",
+    title: "Equipe",
+    desc: "Sensei Jairo Andrade e o corpo técnico da Shoorikan.",
+  },
+  {
+    href: "/projeto-social",
+    title: "Projeto Social",
+    desc: "Como o judô transforma vidas na Vila Prudente.",
+  },
+  {
+    href: "/estrutura",
+    title: "O Dojo",
+    desc: "Conheça o espaço onde a Shoorikan treina.",
+  },
+  {
+    href: "/horarios",
+    title: "Horários",
+    desc: "A grade completa de aulas, sete dias por semana.",
+  },
+  {
+    href: "/visite",
+    title: "Visite",
+    desc: "Endereço, contato e como agendar sua aula experimental.",
+  },
 ];
 
 /* ------------------------------------------------------------------ */

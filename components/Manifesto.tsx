@@ -3,7 +3,7 @@ import { SITE } from "@/lib/site";
 
 export default function Manifesto() {
   return (
-    <section className="section manifesto" aria-label="Manifesto">
+    <section className="section manifesto" id="sobre" aria-label="Manifesto">
       <div className="container">
         <div className="manifesto__grid">
           <div className="manifesto__lines">

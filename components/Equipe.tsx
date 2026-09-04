@@ -1,11 +1,13 @@
 import { FOUNDER, TEAM } from "@/lib/content";
 import { TEAM_PHOTOS } from "@/lib/images";
 import { SITE } from "@/lib/site";
+import BackLink from "./BackLink";
 
 export default function Equipe() {
   return (
     <section className="equipe" id="equipe">
       <div className="container">
+        <BackLink light />
         <div
           className="eyebrow label"
           style={{ color: "var(--violet-deep)" }}

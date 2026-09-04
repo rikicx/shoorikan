@@ -144,7 +144,7 @@ export default function Hero() {
 
       <button
         className="hero__scroll"
-        onClick={() => scrollToId("historia")}
+        onClick={() => scrollToId("sobre")}
         aria-label="Rolar para o conteúdo"
       >
         Role para descobrir

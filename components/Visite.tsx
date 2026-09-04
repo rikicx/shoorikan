@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE, waLink, mapsEmbed } from "@/lib/site";
+import BackLink from "./BackLink";
 
 export default function Visite() {
   return (
@@ -7,6 +8,7 @@ export default function Visite() {
       <div className="container">
         <div className="visite__grid">
           <div>
+            <BackLink light />
             <div className="eyebrow label" style={{ color: "var(--stone-dim)" }}>
               09 — Visite
             </div>
