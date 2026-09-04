@@ -94,7 +94,9 @@ export default function Header() {
 
   return (
     <>
-      <header className={`header${scrolled ? " header--scrolled" : ""}`}>
+      <header
+        className={`header${!onHome || scrolled ? " header--scrolled" : ""}`}
+      >
         <Link
           className="brand"
           href="/"

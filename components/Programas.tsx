@@ -51,7 +51,7 @@ export default function Programas() {
                 </button>
                 <div
                   className="prog-card__body"
-                  style={{ maxHeight: isOpen ? "320px" : "0px" }}
+                  style={{ display: isOpen ? "block" : "none" }}
                 >
                   <div className="prog-card__bodyInner">
                     <h3 className="prog-card__title">{p.title}</h3>

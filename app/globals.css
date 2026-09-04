@@ -546,13 +546,14 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 74% 22%;
+  object-position: 55% 35%;
   filter: saturate(0.68) contrast(1.06) brightness(0.6);
 }
 
 @media (max-width: 680px) {
+  .hero__media video,
   .hero__media img {
-    object-position: 62% 20%;
+    object-position: 60% 35%;
   }
 }
 
@@ -582,6 +583,23 @@ p {
   opacity: 0.05;
   user-select: none;
   will-change: transform;
+}
+
+/* Textura de pontinhos por cima do kanji (não nele) */
+.hero__watermark-dots {
+  position: absolute;
+  right: -4%;
+  bottom: 4%;
+  z-index: 2;
+  width: clamp(9rem, 24vw, 24rem);
+  height: clamp(9rem, 24vw, 24rem);
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cfilter id='kd'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23kd)'/%3E%3C/svg%3E");
+  background-size: 6px 6px;
+  -webkit-mask-image: radial-gradient(circle, #000 55%, transparent 78%);
+  mask-image: radial-gradient(circle, #000 55%, transparent 78%);
 }
 
 @media (max-width: 700px) {
@@ -1237,11 +1255,11 @@ p {
   transform: rotate(45deg);
 }
 
-/* A altura aberta/fechada é controlada via inline style (React state) —
-   mais previsível entre navegadores do que depender só do CSS. */
+/* Mostrar/ocultar via display (inline style, React state) — evitamos
+   transição de max-height: em alguns navegadores mobile ela renderizava
+   a área aberta com um retângulo cinza vazio em vez do conteúdo. */
 .prog-card__body {
   overflow: hidden;
-  transition: max-height 0.4s var(--ease);
 }
 
 .prog-card__bodyInner {
@@ -1279,7 +1297,7 @@ p {
     display: none;
   }
   .prog-card__body {
-    max-height: none !important;
+    display: block !important;
   }
 }
 

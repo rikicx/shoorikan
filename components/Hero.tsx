@@ -3,13 +3,13 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PHOTOS } from "@/lib/images";
 import { SITE, waLink } from "@/lib/site";
 import { scrollToId } from "./SmoothScroll";
 
-// B-roll de judô (Pexels, uso livre) — trocar por vídeo próprio da academia quando houver.
-const HERO_VIDEO =
-  "https://videos.pexels.com/video-files/6766142/6766142-hd_1920_1080_25fps.mp4";
+// Vídeo real da Academia Shoorikan (treino no dojo), cortado e comprimido
+// a partir do material enviado pelo cliente.
+const HERO_VIDEO = "/video/hero.mp4";
+const HERO_POSTER = "/video/hero-poster.jpg";
 
 export default function Hero() {
   const root = useRef<HTMLElement | null>(null);
@@ -93,7 +93,7 @@ export default function Hero() {
           loop
           playsInline
           preload="auto"
-          poster={PHOTOS.treino}
+          poster={HERO_POSTER}
         >
           <source src={HERO_VIDEO} type="video/mp4" />
         </video>
@@ -103,6 +103,7 @@ export default function Hero() {
       <div className="hero__watermark" aria-hidden="true">
         {SITE.kanji}
       </div>
+      <div className="hero__watermark-dots" aria-hidden="true" />
 
       <div className="hero__inner">
         <div className="hero__kicker">
