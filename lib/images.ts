@@ -1,5 +1,8 @@
-// Todas as imagens são REAIS, extraídas do site e materiais oficiais da
-// Academia Shoorikan (academiashoorikan.com.br). Nada de banco de imagens.
+// Praticamente todas as imagens são REAIS, extraídas do site e materiais
+// oficiais da Academia Shoorikan (academiashoorikan.com.br). A única exceção
+// é `muaythaiAction` — foto de banco (Pexels, uso livre), usada a pedido do
+// cliente no card de Muay Thai por ser mais dinâmica/anônima que o retrato
+// estático do professor; a foto real dele continua na galeria "O Dojo".
 
 export const LOGO = "/logo/shoorikan-logo.png";
 
@@ -16,8 +19,11 @@ export const PHOTOS = {
   judoProjecao: "/fotos/judo-projecao.jpg",
   // Turma kids em atividade
   kidsTreino: "/fotos/kids-treino.jpg",
-  // Professor de Muay Thai no dojo (parede de tijolos)
+  // Professor de Muay Thai no dojo (parede de tijolos) — foto oficial
   muaythai: "/fotos/muaythai.jpg",
+  // Luta de Muay Thai, banco de imagens (Pexels) — usada só no card da
+  // modalidade, mais dinâmica/anônima que o retrato estático
+  muaythaiAction: "/fotos/muaythai-action.jpg",
 } as const;
 
 export const TEAM_PHOTOS: Record<string, string> = {

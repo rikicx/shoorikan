@@ -165,7 +165,7 @@ export const MODALITIES = [
     id: "judo",
     name: "Judô",
     kanji: "柔道",
-    lead: "A arte principal da casa desde 1996.",
+    lead: "Para todas as idades, desde 1996.",
     text: "Do judô lúdico das crianças ao alto rendimento: Gokyo, Ne Waza e Kata. Academia filiada à Federação Paulista de Judô, com turmas Kids, Infantil, Juvenil e Adulto.",
     photo: PHOTOS.judoProjecao,
   },
@@ -183,7 +183,7 @@ export const MODALITIES = [
     kanji: "ムエタイ",
     lead: "Técnica em pé e condicionamento.",
     text: "Aulas com boa didática, unindo o lado técnico à comunicação e ao ritmo. Turmas adultas em vários horários ao longo da semana.",
-    photo: PHOTOS.muaythai,
+    photo: PHOTOS.muaythaiAction,
   },
 ];
 
