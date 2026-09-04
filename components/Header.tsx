@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV } from "@/lib/content";
+import { NAV, NAV_ANCHORS } from "@/lib/content";
 import { SITE, waLink } from "@/lib/site";
 import { LOGO } from "@/lib/images";
 import { scrollToId } from "./SmoothScroll";
@@ -33,14 +33,12 @@ export default function Header() {
     setOpen(false);
   }, [pathname]);
 
-  // Scroll-spy só para as seções que vivem na própria home
-  // (História, Princípios, Modalidades, Programas).
+  // Scroll-spy só para as seções-âncora da home (submenu de Início).
   useEffect(() => {
     if (!onHome) return;
-    const ids = NAV.filter((n) => !n.route).map((n) => n.id);
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => !!el);
+    const sections = NAV_ANCHORS.map((n) => document.getElementById(n.id)).filter(
+      (el): el is HTMLElement => !!el,
+    );
     if (!sections.length) return;
 
     const io = new IntersectionObserver(
@@ -56,30 +54,32 @@ export default function Header() {
     return () => io.disconnect();
   }, [onHome]);
 
-  const isActive = (item: (typeof NAV)[number]) =>
-    item.route ? pathname === item.route : onHome && active === item.id;
+  const renderPageLink = (
+    item: (typeof NAV)[number],
+    closeOnClick?: boolean,
+  ) => {
+    const isActive = pathname === item.route;
+    return (
+      <Link
+        href={item.route!}
+        data-active={isActive ? "true" : undefined}
+        aria-current={isActive ? "page" : undefined}
+        onClick={closeOnClick ? () => setOpen(false) : undefined}
+      >
+        {item.label}
+      </Link>
+    );
+  };
 
-  const renderLink = (item: (typeof NAV)[number], closeOnClick?: boolean) => {
-    const active = isActive(item);
-    const activeAttr = active ? "true" : undefined;
-
-    if (item.route) {
-      return (
-        <Link
-          href={item.route}
-          data-active={activeAttr}
-          aria-current={active ? "page" : undefined}
-          onClick={closeOnClick ? () => setOpen(false) : undefined}
-        >
-          {item.label}
-        </Link>
-      );
-    }
-
+  const renderAnchorLink = (
+    item: (typeof NAV_ANCHORS)[number],
+    closeOnClick?: boolean,
+  ) => {
+    const isActive = onHome && active === item.id;
     return (
       <a
         href={onHome ? `#${item.id}` : `/#${item.id}`}
-        data-active={activeAttr}
+        data-active={isActive ? "true" : undefined}
         onClick={(e) => {
           if (!onHome) return; // deixa o navegador ir para /#id
           e.preventDefault();
@@ -122,8 +122,25 @@ export default function Header() {
 
         <nav className="nav" aria-label="Principal">
           <ul className="nav__list">
+            <li className="nav__item nav__item--home">
+              <Link
+                href="/"
+                data-active={onHome ? "true" : undefined}
+                aria-current={onHome ? "page" : undefined}
+              >
+                Início
+                <span className="nav__caret" aria-hidden="true">
+                  ⌄
+                </span>
+              </Link>
+              <ul className="nav__dropdown">
+                {NAV_ANCHORS.map((item) => (
+                  <li key={item.id}>{renderAnchorLink(item)}</li>
+                ))}
+              </ul>
+            </li>
             {NAV.map((item) => (
-              <li key={item.id}>{renderLink(item)}</li>
+              <li key={item.id}>{renderPageLink(item)}</li>
             ))}
           </ul>
 
@@ -149,9 +166,25 @@ export default function Header() {
       </header>
 
       <div className={`mobile-nav${open ? " mobile-nav--open" : ""}`}>
+        <span className="mobile-nav__item">
+          <Link
+            href="/"
+            data-active={onHome ? "true" : undefined}
+            onClick={() => setOpen(false)}
+          >
+            Início
+          </Link>
+        </span>
+        <div className="mobile-nav__sub">
+          {NAV_ANCHORS.map((item) => (
+            <span key={item.id} className="mobile-nav__subitem">
+              {renderAnchorLink(item, true)}
+            </span>
+          ))}
+        </div>
         {NAV.map((item) => (
           <span key={item.id} className="mobile-nav__item">
-            {renderLink(item, true)}
+            {renderPageLink(item, true)}
           </span>
         ))}
         <a

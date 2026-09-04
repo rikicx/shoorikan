@@ -10,13 +10,17 @@ import { PHOTOS } from "./images";
 
 export type NavItem = { id: string; label: string; route?: string };
 
-// Itens sem `route` são seções que vivem na própria home (âncora); com
-// `route`, são páginas dedicadas.
-export const NAV: NavItem[] = [
+// Seções que vivem na própria home (âncora) — aparecem como submenu de
+// "Início" no cabeçalho, não como itens soltos no menu principal.
+export const NAV_ANCHORS: NavItem[] = [
   { id: "historia", label: "História" },
   { id: "principios", label: "Princípios" },
   { id: "modalidades", label: "Modalidades" },
   { id: "programas", label: "Programas" },
+];
+
+// Menu principal: só páginas de verdade, cada uma com sua própria URL.
+export const NAV: NavItem[] = [
   { id: "equipe", label: "Equipe", route: "/equipe" },
   { id: "projeto-social", label: "Projeto Social", route: "/projeto-social" },
   { id: "estrutura", label: "O Dojo", route: "/estrutura" },

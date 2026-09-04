@@ -406,7 +406,7 @@ p {
   position: relative;
 }
 
-.nav__list a[data-active="true"]::after {
+.nav__list > li > a[data-active="true"]::after {
   content: "";
   position: absolute;
   left: 0;
@@ -414,6 +414,63 @@ p {
   width: 100%;
   height: 1px;
   background: var(--violet-hi);
+}
+
+/* Submenu "Início" — reúne as seções que vivem na home */
+.nav__item--home > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.nav__caret {
+  font-size: 0.9em;
+  color: var(--stone-dim);
+  transition: transform 0.3s var(--ease);
+}
+
+.nav__item--home:hover .nav__caret,
+.nav__item--home:focus-within .nav__caret {
+  transform: scaleY(-1);
+}
+
+.nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: -0.9rem;
+  margin-top: 0.5rem;
+  min-width: 180px;
+  padding: 0.5rem 0;
+  background: rgba(11, 10, 15, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line-light);
+  border-radius: 2px;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease),
+    visibility 0s linear 0.25s;
+}
+
+.nav__item--home:hover .nav__dropdown,
+.nav__item--home:focus-within .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease),
+    visibility 0s linear 0s;
+}
+
+.nav__dropdown a {
+  display: block;
+  padding: 0.6rem 1.1rem;
+  white-space: nowrap;
+}
+
+.nav__dropdown a[data-active="true"] {
+  color: var(--violet-hi);
 }
 
 .nav__cta {
@@ -510,6 +567,27 @@ p {
 }
 
 .mobile-nav a[data-active="true"] {
+  color: var(--violet-hi);
+}
+
+.mobile-nav__sub {
+  padding-left: 1.1rem;
+  border-bottom: 1px solid var(--line-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.mobile-nav .mobile-nav__sub a {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+  border-bottom: none;
+  padding-block: 0.55rem;
+}
+
+.mobile-nav .mobile-nav__sub a[data-active="true"] {
   color: var(--violet-hi);
 }
 

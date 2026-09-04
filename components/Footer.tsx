@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NAV } from "@/lib/content";
+import { NAV, NAV_ANCHORS } from "@/lib/content";
 import { SITE, waLink } from "@/lib/site";
 import { LOGO } from "@/lib/images";
 
@@ -15,17 +15,17 @@ export default function Footer() {
             SHOORIKAN<span>{SITE.kanji}</span>
           </div>
           <nav className="footer__nav" aria-label="Rodapé">
-            {NAV.map((n) =>
-              n.route ? (
-                <Link key={n.id} href={n.route}>
-                  {n.label}
-                </Link>
-              ) : (
-                <a key={n.id} href={`/#${n.id}`}>
-                  {n.label}
-                </a>
-              ),
-            )}
+            <Link href="/">Início</Link>
+            {NAV_ANCHORS.map((n) => (
+              <a key={n.id} href={`/#${n.id}`}>
+                {n.label}
+              </a>
+            ))}
+            {NAV.map((n) => (
+              <Link key={n.id} href={n.route!}>
+                {n.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
