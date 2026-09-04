@@ -23,7 +23,7 @@ export default function BackToTop() {
       aria-label="Voltar ao topo"
     >
       <span aria-hidden="true">↑</span>
-      Voltar ao topo
+      <span className="back-to-top__label">Voltar ao topo</span>
     </button>
   );
 }

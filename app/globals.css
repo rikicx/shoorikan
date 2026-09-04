@@ -1271,13 +1271,17 @@ p {
 .prog-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1px;
-  background: var(--line-light);
-  border: 1px solid var(--line-light);
+  gap: 1rem;
 }
 
+/* Borda própria em cada card (em vez do "vazamento" de fundo pelo gap
+   do grid) — em alguns navegadores mobile, alternar a altura de um
+   item nesse tipo de grid deixava um retângulo cinza mal repintado. */
 .prog-card {
   background: var(--sumi);
+  border: 1px solid var(--line-light);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .prog-card__summary {
@@ -1442,13 +1446,17 @@ p {
 .team-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1px;
-  background: var(--line-dark);
-  border: 1px solid var(--line-dark);
+  gap: 1.5rem;
 }
 
+/* Cada pessoa no seu próprio cartão com borda — precisa ficar claro
+   onde termina um integrante da equipe e começa o outro, especialmente
+   numa coluna só no mobile. */
 .team-card {
   background: var(--washi);
+  border: 1px solid var(--line-dark);
+  border-radius: 4px;
+  overflow: hidden;
   padding: clamp(1.5rem, 3vw, 2.2rem);
   display: flex;
   flex-direction: column;
@@ -2241,7 +2249,7 @@ p {
 .floating-cta {
   position: fixed;
   right: 1rem;
-  bottom: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   z-index: 190;
   display: flex;
   align-items: center;
@@ -2266,32 +2274,38 @@ p {
 @media (min-width: 900px) {
   .floating-cta {
     right: 1.6rem;
-    bottom: 1.6rem;
+    bottom: calc(1.6rem + env(safe-area-inset-bottom, 0px));
   }
 }
 
-/* Voltar ao topo — espelha o floating-cta, do lado esquerdo */
+/* Voltar ao topo — no mobile é só o ícone (pra não colidir com o CTA
+   de WhatsApp); no desktop ganha o rótulo, espelhando o floating-cta. */
 .back-to-top {
   position: fixed;
   left: 1rem;
-  bottom: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   z-index: 190;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.9rem 1.3rem;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  gap: 0;
   background: var(--sumi);
   color: var(--washi);
   border: 1px solid var(--line-light);
-  border-radius: 100px;
+  border-radius: 50%;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 1rem;
   box-shadow: 0 12px 40px rgba(11, 10, 15, 0.25);
   transform: translateY(150%);
   transition: transform 0.6s var(--ease), background 0.4s var(--ease),
     color 0.4s var(--ease);
+}
+
+.back-to-top__label {
+  display: none;
 }
 
 .back-to-top:hover {
@@ -2304,18 +2318,29 @@ p {
   transform: none;
 }
 
-.back-to-top span {
+.back-to-top span:first-child {
   transition: transform 0.4s var(--ease);
 }
 
-.back-to-top:hover span {
+.back-to-top:hover span:first-child {
   transform: translateY(-2px);
 }
 
 @media (min-width: 900px) {
   .back-to-top {
     left: 1.6rem;
-    bottom: 1.6rem;
+    bottom: calc(1.6rem + env(safe-area-inset-bottom, 0px));
+    width: auto;
+    height: auto;
+    padding: 0.9rem 1.3rem;
+    gap: 0.6rem;
+    border-radius: 100px;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .back-to-top__label {
+    display: inline;
   }
 }
 
