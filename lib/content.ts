@@ -183,7 +183,7 @@ export const MODALITIES = [
     kanji: "ムエタイ",
     lead: "Técnica em pé e condicionamento.",
     text: "Aulas com boa didática, unindo o lado técnico à comunicação e ao ritmo. Turmas adultas em vários horários ao longo da semana.",
-    photo: PHOTOS.muaythaiAction,
+    photo: PHOTOS.muaythai,
   },
 ];
 
